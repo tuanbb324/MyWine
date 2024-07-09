@@ -1,0 +1,170 @@
+﻿@using WebCore.Domain.Catalog;
+@model Category
+@{
+    ViewBag.Menu = "Category";
+}
+<section class="content-header">
+    <h1>
+        Chỉnh  danh mục sản phẩm
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bài viết</li>
+    </ol>
+</section>
+<section class="content">
+
+    <div class="row">
+        <form role="form" action="/Admin/Category/Edit">
+            <div>
+                <div class="col-xs-3">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <img id="imageurl" style="width: 100%;min-height: 150px;"  />
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Ảnh đại diện</label>
+                                <input type="file" id="UploadImage" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-9">
+                    <div class="box box-primary">
+
+                        <div class="box-body">
+                            <input type="hidden" class="form-control" id="Id" value="@Model.Id">
+                            <input type="hidden" class="form-control" id="Image" value="@Model.Image">
+                            <div class="form-group">
+                                <label for="name">Tên danh mục sản phẩm</label>
+                                <input type="text" class="form-control" id="Name" required placeholder="Tên danh mục" value="@Model.Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Decsription">Mô tả</label>
+                                <textarea class="form-control" id="Decsription" placeholder="Mô tả">@Model.Description</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="SeoUrl">SeoUrl</label>
+                                <input type="text" class="form-control" id="SeoUrl" placeholder="SeoUrl" value="@Model.SeoUrl">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="MetaTitle">MetaTitle</label>
+                                <input type="text" class="form-control" id="MetaTitle" placeholder="SeoUrl" value="@Model.MetaTitle">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="MetaKeywords">MetaKeywords</label>
+                                <input type="text" class="form-control" id="MetaKeywords" placeholder="MetaKeyWord" value="@Model.MetaKeywords">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="MetaDescription">MetaDescription</label>
+                                <input type="text" class="form-control" id="MetaDescription" placeholder="MetaDescription" value="@Model.MetaDescription">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="DateAdded">DateAdded</label>
+                                <input type="date" class="form-control" id="DateAdded" placeholder="DateAdded" value="@Model.DateAdded">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="DateModified">DateModified</label>
+                                <input type="date" class="form-control" id="DateModified" placeholder="DateModified" value="@Model.DateModified">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="ParentCategoryId">ParentCategoryId</label>
+                                <input type="number" class="form-control" id="ParentCategoryId" placeholder="DateModified" value="@Model.ParentCategoryId">
+                            </div>
+
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="Published" value="@Model.Published" @(Model.Published ? "checked" : "")> Xuất bản
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="IsShowMenu" value="@Model.IsShowMenu" @(Model.IsShowMenu ? "checked" : "")> Hiển thị trên Menu
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="IsShowHome" value="@Model.IsShowHome" @(Model.IsShowHome ? "checked" : "")> Hiển thị trên trang chủ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-xs-12" style=" text-align: center; ">
+                <button type="submit" id="btn-Save" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+        $("#UploadImage").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image").val(data.url);
+                        $("#imageurl").attr("src", data.url);
+
+                    }
+                }
+            });
+        })
+        $("form").submit(function (event) {
+            var formData = {
+                Id: $("#Id").val(),
+                Name: $("#Name").val(),
+                Decsription: $("#Decsription").val(),
+                SeoUrl: $("#SeoUrl").val(),
+                Keywords: $("#Keywords").val(),
+                Published: $("#Published").val(),
+                Image: $("#Image").val(),
+            };
+            debugger
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Category/Edit",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                alert(data.message);
+                 if(data.status>0)
+                location.href="/Admin/Category/Index";
+            });
+
+            event.preventDefault();
+        });
+    });
+</script>

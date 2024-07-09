@@ -1,0 +1,464 @@
+﻿@using Newtonsoft.Json;
+@using WebCore.Domain.Catalog;
+@model Product
+@{
+    ViewBag.Menu = "Product";
+    var categories = (List<Category>)ViewBag.Categories;
+    var cate = Model.Categories.Select(x => x.CategoryId).ToList();
+
+    var stringlist = JsonConvert.SerializeObject(cate);
+}
+<section class="content-header">
+    <h1>
+        chỉnh sửa sản phẩm
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sản phẩm</li>
+    </ol>
+</section>
+<section class="content">
+
+    <div class="row">
+        <form role="form" action="/Admin/Product/Edit">
+            <div>
+                <div class="col-xs-3">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <img id="imageurl" src="@Model.Image" style="width: 100%;min-height: 150px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Ảnh đại diện 1</label>
+                                <input type="file" id="UploadImage" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <img id="imageurl2" src="@Model.Image2" style="width: 100%;min-height: 150px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Ảnh đại diện 2</label>
+                                <input type="file" id="UploadImage2" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <img id="imageurl3" src="@Model.Image3" style="width: 100%;min-height: 150px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Ảnh đại diện 3</label>
+                                <input type="file" id="UploadImage3" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <img id="imageurl4" src="@(Model.Image4)" style="width: 100%;min-height: 150px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Ảnh đại diện 4</label>
+                                <input type="file" id="UploadImage4" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-9">
+                    <div class="box box-primary">
+
+                        <div class="box-body">
+                            <input type="hidden" class="form-control" id="Id" value="@Model.Id">
+                            <input type="hidden" class="form-control" id="Image" value="@Model.Image">
+                            <input type="hidden" class="form-control" id="Image2" value="@Model.Image2">
+                            <input type="hidden" class="form-control" id="Image3" value="@Model.Image3">
+                            <input type="hidden" class="form-control" id="Image4" value="@Model.Image4">
+                            <div class="form-group">
+                                <label>Danh mục</label>
+                                <select class="form-control select2" id="CategoryId" required multiple="multiple" data-placeholder="Chọn danh mục"
+                                        style="width: 100%;">
+                                    @foreach (var item in categories)
+                                    {
+
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="Name" value="@Model.Name" required placeholder="Tên sản phẩm">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Decsription">Mô tả</label>
+                                <textarea class="form-control" id="Decsription" placeholder="Mô tả">@Model.Name</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="SeoUrl">SeoUrl</label>
+                                <input type="text" class="form-control" id="SeoUrl" value="@Model.SeoUrl" placeholder="SeoUrl">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="MetaKeywords">Keywords</label>
+                                <input type="text" class="form-control" id="MetaKeywords" value="@Model.MetaKeywords" placeholder="MetaKeyWord">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="Note">Ghi chú</label>
+                                <textarea class="form-group" id="Note" name="Note" rows="10" cols="80">
+                                    @Model.Note
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Enjoy">Thưởng thức</label>
+                                <textarea class="form-group" id="Enjoy" name="Enjoy" rows="10" cols="80">
+                                    @Model.Enjoy
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="BasicInformation">Thông tin cơ bản</label>
+                                <textarea class="form-group" id="BasicInformation" name="BasicInformation" rows="10" cols="80">
+                                    @Model.BasicInformation
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Content">Nội dung</label>
+                                <textarea class="form-group" id="Content" name="Content" rows="10" cols="80">
+                                    @Model.Content
+                                </textarea>
+
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="Published" @(Model.Published ? "checked" : "")> Xuất bản
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-xs-12" style=" text-align: center; ">
+                <button type="submit" id="btn-Save" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<script src="~/bower_components/ckeditor/ckeditor.js"></script>
+<script src="~/bower_components/ckeditor/config.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        tinymce.init({
+            selector: 'textarea#Content',
+            plugins: 'image code media',
+            toolbar:
+                [
+                    { name: 'history', items: ['undo', 'redo'] },
+                    { name: 'styles', items: ['styles'] },
+                    { name: 'formatting', items: ['bold', 'italic', 'link', 'image', 'media'] },
+                    { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
+                    { name: 'indentation', items: ['outdent', 'indent', 'code'] }
+                ],
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_upload_url: '/Admin/File/UploadV2',
+            relative_urls: false,
+            remove_script_host: true,
+            file_picker_callback: function (cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var formData = new FormData();
+                    formData.append('File', file);
+                    $.ajax({
+                        url: '/Admin/File/Upload',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if (data.statusCode == 1) {
+                                cb(data.url, { alt: file.name });
+                            }
+                        }
+                    });
+                };
+                input.click();
+            },
+        });
+        tinymce.init({
+            selector: 'textarea#Enjoy',
+            plugins: 'image code media',
+            toolbar:
+                [
+                    { name: 'history', items: ['undo', 'redo'] },
+                    { name: 'styles', items: ['styles'] },
+                    { name: 'formatting', items: ['bold', 'italic', 'link', 'image', 'media'] },
+                    { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
+                    { name: 'indentation', items: ['outdent', 'indent', 'code'] }
+                ],
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_upload_url: '/Admin/File/UploadV2',
+            relative_urls: false,
+            remove_script_host: true,
+            file_picker_callback: function (cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var formData = new FormData();
+                    formData.append('File', file);
+                    $.ajax({
+                        url: '/Admin/File/Upload',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if (data.statusCode == 1) {
+                                cb(data.url, { alt: file.name });
+                            }
+                        }
+                    });
+                };
+                input.click();
+            },
+        });
+        tinymce.init({
+            selector: 'textarea#Note',
+            plugins: 'image code media',
+            toolbar:
+                [
+                    { name: 'history', items: ['undo', 'redo'] },
+                    { name: 'styles', items: ['styles'] },
+                    { name: 'formatting', items: ['bold', 'italic', 'link', 'image', 'media'] },
+                    { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
+                    { name: 'indentation', items: ['outdent', 'indent', 'code'] }
+                ],
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_upload_url: '/Admin/File/UploadV2',
+            relative_urls: false,
+            remove_script_host: true,
+            file_picker_callback: function (cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var formData = new FormData();
+                    formData.append('File', file);
+                    $.ajax({
+                        url: '/Admin/File/Upload',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if (data.statusCode == 1) {
+                                cb(data.url, { alt: file.name });
+                            }
+                        }
+                    });
+                };
+                input.click();
+            },
+        });
+        tinymce.init({
+            selector: 'textarea#BasicInformation',
+            plugins: 'image code media',
+            toolbar:
+                [
+                    { name: 'history', items: ['undo', 'redo'] },
+                    { name: 'styles', items: ['styles'] },
+                    { name: 'formatting', items: ['bold', 'italic', 'link', 'image', 'media'] },
+                    { name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify'] },
+                    { name: 'indentation', items: ['outdent', 'indent', 'code'] }
+                ],
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_upload_url: '/Admin/File/UploadV2',
+            relative_urls: false,
+            remove_script_host: true,
+            file_picker_callback: function (cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var formData = new FormData();
+                    formData.append('File', file);
+                    $.ajax({
+                        url: '/Admin/File/Upload',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            if (data.statusCode == 1) {
+                                cb(data.url, { alt: file.name });
+                            }
+                        }
+                    });
+                };
+                input.click();
+            },
+        });
+        //var ckContent = CKEDITOR.replace('Content');
+        //var ckCEnjoy = CKEDITOR.replace('Enjoy');
+        //var ckNote = CKEDITOR.replace('Note');
+        // var ckBasicInformation = CKEDITOR.replace('BasicInformation');
+        $('.select2').select2();
+
+        $('#CategoryId').val(@stringlist);
+
+        $('#CategoryId').trigger('change'); // Notify any JS components that the value cha
+        $("#UploadImage").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image").val(data.url);
+                        $("#imageurl").attr("src", data.url);
+
+                    }
+                }
+            });
+        });
+        $("#UploadImage2").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage2')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image2").val(data.url);
+                        $("#imageurl2").attr("src", data.url);
+
+                    }
+                }
+            });
+        });
+        $("#UploadImage3").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage3')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image3").val(data.url);
+                        $("#imageurl3").attr("src", data.url);
+
+                    }
+                }
+            });
+        });
+        $("#UploadImage4").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage4')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image4").val(data.url);
+                        $("#imageurl4").attr("src", data.url);
+
+                    }
+                }
+            });
+        })
+        $("form").submit(function (event) {
+            var formData = {
+                Id: $("#Id").val(),
+                Name: $("#Name").val(),
+                Decsription: $("#Decsription").val(),
+                SeoUrl: $("#SeoUrl").val(),
+                Keywords: $("#Keywords").val(),
+                Published: $("#Published").is(":checked"),
+                Image: $("#Image").val(),
+                Image2: $("#Image2").val(),
+                Image3: $("#Image3").val(),
+                Image4: $("#Image4").val(),
+                Content: tinymce.get("Content").getContent(),
+                Enjoy: tinymce.get("Enjoy").getContent(),
+                Note: tinymce.get("Note").getContent(),
+                CategoryId: $('#CategoryId').val(),
+                BasicInformation: tinymce.get("BasicInformation").getContent(),
+
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Product/Edit",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                alert(data.message);
+                if (data.status > 0)
+                    location.href = "/Admin/Product/Index";
+            });
+
+            event.preventDefault();
+        });
+    });</script>

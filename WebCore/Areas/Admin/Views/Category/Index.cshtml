@@ -1,0 +1,62 @@
+﻿@using WebCore.Domain.Catalog;
+@model IList<Category>
+@{
+    ViewBag.Menu = "Category";
+    ViewData["Title"] = ViewData["ContentHeader"] = "Product List";
+}
+
+<section class="content-header">
+    <h1>
+        Danh mục sản phẩm
+        <small>Danh sách danh mục sản phẩm</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sản phấm</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row" style=" margin-bottom: 15px; ">
+        <div class="col-xs-12 mb2">
+            <a href="/Admin/Category/Add" type="button" class="btn  btn-primary btn-lg">Thêm mới</a>
+        </div>
+    </div>
+    <div class="row" style=" margin-bottom: 15px; ">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Danh mục</th>
+                            <th>Hình ảnh</th>
+                            <th>Trạng thái </th>
+                            <th>Action</th>
+                        </tr>
+                        @foreach (var item in Model.ToList())
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>   <img src="@item.Image" alt="@item.Name" width="40px" height="40px"> </td>
+                                <td>@Html.Raw(item.Published == true ? "<span class=\"label label-success\">Xuất bản</span>" : "<span class=\"label label-success\">Chưa xuất </span>")</td>
+                                <td>
+                                    <a href="/Admin/Category/Edit/@item.Id" class="btn btn-primary">Sửa</a>
+                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+   
+
+</section>

@@ -1,0 +1,133 @@
+﻿@using WebCore.Domain.Catalog;
+@model ArticleCategory
+@{
+      ViewBag.Menu = "ArticleCategory";
+}
+
+<section class="content-header">
+    <h1>
+        Chỉnh <input type="hidden" class="form-control" id="Id" value="@Model.Id">
+        <input type="hidden" class="form-control" id="Image" value="@Model.Image"> danh mục bài viết
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bài viết</li>
+    </ol>
+</section>
+<section class="content">
+    
+    <div class="row">
+        <form role="form" action="/Admin/Category/Edit">
+            <div class="col-xs-3">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <img id="imageurl" style="width: 100%;min-height: 150px;" src="@Model.Image" />
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Ảnh đại diện</label>
+                            <input type="file" id="UploadImage" accept="image/*" value="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-9">
+                <div class="box box-primary">
+
+                    <div class="box-body">
+                        <input type="hidden" class="form-control" value="@Model.Id" id="Id">
+                        <input type="hidden" class="form-control" value="@Model.Image" id="Image">
+                        <div class="form-group">
+                            <label for="name">Tên danh mục</label>
+                            <input type="text" class="form-control" id="Name" value="@Model.Name" required placeholder="Tên danh mục">
+                        </div>
+                        <div class="form-group">
+                            <label for="Decsription">Mô tả</label>
+                            <textarea class="form-control" id="Decsription" placeholder="Mô tả">
+                                @Model.Decsription
+                            </textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="SeoUrl">SeoUrl</label>
+                            <input type="text" class="form-control" id="SeoUrl" placeholder="SeoUrl" value="@Model.SeoUrl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Keywords">Keywords</label>
+                            <input type="text" class="form-control" id="Keywords" placeholder="Keywords" value="@Model.Keywords">
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="Published" value="@Model.Published" @(Model.Published ? "checked" : "")> Xuất bản
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-xs-12" style=" text-align: center; ">
+                <button type="submit" id="btn-Save" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+        $("#UploadImage").change(function () {
+
+            var formData = new FormData();
+            formData.append('File', $('#UploadImage')[0].files[0]);
+
+            $.ajax({
+                url: '/Admin/File/Upload',
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (data) {
+                    if (data.statusCode == 1) {
+                        $("#Image").val(data.url);
+                        $("#imageurl").attr("src", data.url);
+
+                    }
+                }
+            });
+        })
+        $("form").submit(function (event) {
+            var formData = {
+                Id: $("#Id").val(),
+                Name: $("#Name").val(),
+                Decsription: $("#Decsription").val(),
+                SeoUrl: $("#SeoUrl").val(),
+                Keywords: $("#Keywords").val(),
+                Published: $("#Published").val(),
+                Image: $("#Image").val(),
+            };
+            debugger
+            $.ajax({
+                type: "POST",
+                url: "/Admin/ArticleCategory/Edit",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                alert(data.message);
+                 if(data.status>0)
+               location.href="/Admin/ArticleCategory/Index";
+            });
+
+            event.preventDefault();
+        });
+    });
+</script>

@@ -1,0 +1,93 @@
+﻿@model WebCore.Models.ProductViewModel
+
+<div class="shop-page-title category-page-title page-title ">
+    <div class="page-title-inner flex-row  medium-flex-wrap container">
+        <div class="flex-col flex-grow medium-text-center">
+            <div class="is-larger">
+                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="../index.html">Trang chủ</a> <span class="divider">&#47;</span> Rượu Đà Lạt</nav>
+            </div>
+            <div class="category-filtering category-filter-row show-for-medium">
+                <a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left" class="filter-button uppercase plain">
+                    <i class="icon-equalizer"></i>
+                    <strong>Lọc</strong>
+                </a>
+                <div class="inline-block">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main id="main" class="">
+
+    <div class="row category-page-row">
+
+        <div class="col large-3 hide-for-medium ">
+            <div id="shop-sidebar" class="sidebar-inner col-inner">
+                <aside id="woocommerce_product_categories-3" class="widget woocommerce widget_product_categories">
+                    <span class="widget-title shop-sidebar">Các loại sản phẩm</span><div class="is-divider small"></div>
+                    <ul class="product-categories">
+                        @foreach(var item in @Model.Categories)
+                        {
+                            var count = Model.Products.Where(p=> p.Categories.First().Id == item.Key.Id).Count();
+                            <li class="cat-item cat-item-71"><a href=@Url.Content($"~/product/category/{item.Key.Id}")>@item.Key.Name</a> <span class="count">@item.Value</span></li>
+                        }
+                    </ul>
+                </aside>
+
+            </div>
+        </div>
+
+        <div class="col large-9">
+            <div class="shop-container">
+
+                <div class="woocommerce-notices-wrapper"></div>
+
+                <div class="woof_products_top_panel"></div>
+                <div class="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-shadow row-box-shadow-2-hover has-equal-box-heights equalize-box">
+                    @if (@Model.Products != null)
+                    {
+                        @foreach (var product in @Model.Products)
+                        {
+                                <div class="product-small col has-hover product type-product post-2086 status-publish first instock product_cat-ruou-da-lat product_tag-ruou-vang-da-lat product_tag-vang-dalatbeco product_tag-vang-da-lat product_tag-vang-fruit-wine product_tag-vang-gia-re-da-lat has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                                    <div class="col-inner">
+
+                                       
+                                        <div class="product-small box ">
+                                            <div class="box-image">
+                                                <div class="image-fade_in_back">
+                                                    <a href="@($"/san-pham/{product.SeoUrl+"-"+product.Id.ToString()}")" aria-label=@product.Name >
+                                                        <img width="300" height="363" src=@Url.Content($"~{@product.ImageUrls.FirstOrDefault()}") class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" fetchpriority="high" srcset="" sizes="(max-width: 300px) 100vw, 300px" />
+                                                    </a>
+                                                </div>
+                                                <div class="image-tools is-small top right show-on-hover">
+                                                </div>
+                                                <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                                </div>
+                                                <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                </div>
+                                            </div>
+
+                                            <div class="box-text box-text-products text-center grid-style-2">
+                                                <div class="title-wrapper">
+                                                    <p class="name product-title woocommerce-loop-product__title">
+                                                        <a href="@($"/san-pham/{product.SeoUrl+"-"+product.Id.ToString()}")" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@product.Name</a>
+                                                    </p>
+                                                    </div>
+                                                <div class="price-wrapper">
+                                                    <span class="price"><del aria-hidden="true"></del> <ins><span class="woocommerce-Price-amount amount"><bdi>LIÊN HỆ</bdi></span></ins></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        
+                    }
+                </div><!-- row -->
+            </div><!-- shop container -->
+        </div>
+    </div>
+
+</main>

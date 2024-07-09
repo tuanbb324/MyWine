@@ -1,0 +1,130 @@
+﻿@using WebCore.Domain.Catalog;
+@model List<Specification>
+
+
+<section class="content-header">
+    <h1>
+        Thêm mới danh mục sản phẩm
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bài viết</li>
+    </ol>
+</section>
+<section class="content">
+    <button type="button" id="addItem" class="btn btn-primary">Thêm</button>
+    <div class="row">
+        <form role="form" id="form">
+            <div>
+                <div class="col-xs-12">
+                    <div class="box box-primary">
+
+                        <div class="box-body " id="specification-body">
+                            @foreach (var item in Model)
+                            {
+                                <div class="row specification-row">
+                                    <div class="col-xs-2">
+                                        <input type="hidden" class="form-control Id" placeholder="Tên" value="@item.Id">
+                                        <input type="text" class="form-control Name" required placeholder="Tên" value="@item.Name">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control Description" placeholder="Mô tả" value="@item.Description">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control Position" placeholder="Vị trí" value="@item.Position">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input class="Published" type="checkbox" @(item.Published ? "checked" : "")>
+                                                Xuất bản
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-xs-12" style=" text-align: center; ">
+                <button type="submit" id="btn-Save" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+        console.log($("#form"));
+        $("#addItem").click(function (event) {
+            console.log($("#form"));
+            var html = `<div class="row specification-row">
+                                    <div class="col-xs-2">
+                                         <input type="hidden" class="form-control Id" placeholder="Tên" value="0">
+                                                <input type="text" class="form-control Name" required placeholder="Tên" value="">
+                                    </div>
+                                    <div class="col-xs-6">
+                                            <input type="text" class="form-control Description" placeholder="Mô tả">
+                                    </div>
+                                    <div class="col-xs-1">
+                                            <input type="text" class="form-control Position" placeholder="Vị trí" value="0" >
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="checkbox">
+                                            <label>
+                                                    <input type="checkbox" class="Published">
+                                                Xuất bản
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                     <div class="col-xs-1">
+                                                <button type="button" class="btn btn-danger btn-xs btn-delete-item">Xóa</button>
+                                        </div>
+                                </div>`;
+            $("#specification-body").append(html);
+        });
+        $(document).on("click", ".btn-delete-item", function (event) {
+            $(this).parents(".specification-row").remove();
+        })
+        $("form").submit(function (event) {
+
+
+            var lst = [];
+            for (let i = 0; i < $(".specification-row").length; i++) {
+
+                let Id = parseInt($(".specification-row").eq(i).find(".Id").val());
+                let Name = $(".specification-row").eq(i).find(".Name").val();
+                let Position = parseInt($(".specification-row").eq(i).find(".Position").val());
+                let Description = $(".specification-row").eq(i).find(".Description").val();
+                let Published = $(".specification-row").eq(i).find(".Published").is(":checked");
+
+                let item = { Id: Id, Name: Name, Position: Position, Description: Description, Published: Published, };
+                lst.push(item);
+            }
+            EditSpecificationViewModel = JSON.stringify(lst);
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Specification/Add",
+                data: EditSpecificationViewModel,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                //encode: true,
+            }).done(function (data) {
+                console.log(data);
+            });
+
+            event.preventDefault();
+        });
+    });
+</script>

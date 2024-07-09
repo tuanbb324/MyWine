@@ -1,0 +1,694 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ProductViewModel
+
+<div id="content" role="main" class="content-area">
+
+    <section class="section banner-dau-trang" id="section_873471040">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+
+
+            <div class="section-bg-overlay absolute fill"></div>
+
+
+        </div>
+        <div class="section-content relative">
+
+
+            <div class="slider-wrapper relative" id="slider-1899745338">
+                <div class="slider slider-nav-circle slider-nav-normal slider-nav-light slider-style-normal">
+
+
+
+                    <div class="banner has-hover" id="banner-1373247320">
+                        <div class="banner-inner fill">
+                            <div class="banner-bg fill">
+                                <div class="bg fill bg-fill "></div>
+                                <div class="overlay"></div>
+                            </div>
+                            <div class="banner-layers container">
+                                <div class="fill banner-link">
+                                </div>
+
+                                <div id="text-box-1343426810" class="text-box banner-layer x0 y50 md-y50 lg-y50 res-text">
+                                    <div class="text-box-content text dark">
+
+                                        <div class="text-inner text-center">
+
+
+                                            <div id="text-3389711652" class="text">
+
+
+                                                <h2 class="uppercase"><strong> Công ty Sản xuất - Dịch vụ TM Hoàng Minh</strong></h2>
+                                                <h3>Cung cấp sỉ &#8211; lẻ các loại rượu, trà & dược liệu</h3>
+                                                <p><span style="color: #808080; font-size: 100%;"><em>&#8220;Chất lượng sản phẩm được khẳng định tại thị trường trong nước và quốc tế&#8221;.</em></span></p>
+
+                                                <style>
+                                                    #text-3389711652 {
+                                                        color: rgb(210, 26, 35);
+                                                    }
+
+                                                        #text-3389711652 > * {
+                                                            color: rgb(210, 26, 35);
+                                                        }
+                                                </style>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <style>
+                                      /*  #text-box-1343426810 {
+                                            width: 100%;
+                                        }*/
+
+                                            #text-box-1343426810 .text-box-content {
+                                                font-size: 100%;
+                                            }
+
+                                      
+                                    </style>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <style>
+                            #banner-1373247320 {
+                                padding-top: 400px;
+                            }
+
+                                #banner-1373247320 .bg.bg-loaded {
+                                    background-image: url(/img/banner.jpg);
+                                }
+
+                                #banner-1373247320 .overlay {
+                                    background-color: rgba(158, 158, 158, 0.31);
+                                }
+
+                            @@media (min-width:550px) {
+                                #banner-1373247320 {
+                                    padding-top: 600px;
+                                }
+                            }
+                        </style>
+                    </div>
+
+
+                </div>
+
+                <div class="loading-spin dark large centered"></div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <style>
+            #section_873471040 {
+                padding-top: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 40px;
+            }
+
+                #section_873471040 .section-bg-overlay {
+                    background-color: rgb(144, 28, 28);
+                }
+
+            @@media (min-width:550px) {
+                #section_873471040 {
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                }
+            }
+        </style>
+    </section>
+
+    <section class="section de-xuat" id="section_1794061458">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+        </div>
+
+        <div class="section-content relative">
+
+
+            <div class="row row-small align-center" id="row-718974765">
+
+
+                <div id="col-537419049" class="col small-12 large-12">
+                    <div class="col-inner text-center">
+
+
+
+                        <div class="container section-title-container"><h2 class="section-title section-title-center"><b></b><span class="section-title-main" style="color:rgb(241, 40, 0);">Sản Phẩm của chúng tôi</span><b></b></h2></div>
+
+                        <div id="text-3534612595" class="text">
+
+
+                            <p style="text-align: center;"><span style="font-size: 95%; color: #808080;"><em> Quý khách còn có thể khám phá thêm tinh hoa rượu truyền thống của Người Việt Nam và một số loại nước ép trái cây lên men của Việt Nam</em></span></p>
+
+                            <style>
+                                #text-3534612595 {
+                                    font-size: 1.15rem;
+                                    color: rgb(239, 17, 17);
+                                }
+
+                                    #text-3534612595 > * {
+                                        color: rgb(239, 17, 17);
+                                    }
+                            </style>
+                        </div>
+
+
+                        <div class="banner-grid-wrapper">
+                            <div id="banner-grid-666388294" class="banner-grid row row-grid row-small" data-packery-options="">
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <div class="col grid-col small-12 large-6 grid-col-1-2" style="position: absolute; left: 0px; top: 0px;">
+                                        <div class="col-inner box-shadow-1 box-shadow-1-hover">
+
+
+                                            <div class="banner has-hover" id="banner-878192858">
+                                                <div class="banner-inner fill">
+                                                    <div class="banner-bg fill">
+                                                        <div class="bg fill bg-fill bg-loaded"></div>
+
+                                                        <div class="effect-confetti bg-effect fill no-click"></div>
+                                                    </div>
+                                                    <div class="banner-layers container">
+                                                        <a class="fill" href="@($"/danh-muc-san-pham/{item.Key.SeoUrl}-{item.Key.Id}")" target="_blank" rel="noopener noreferrer"><div class="fill banner-link"></div></a>
+
+                                                        <div id="text-box-316200079" class="text-box banner-layer x50 md-x50 lg-x50 y95 md-y85 lg-y85 res-text">
+                                                            <div data-animate="fadeInLeft" data-animated="true">
+                                                                <div class="text-box-content text ">
+
+                                                                    <div class="text-inner text-center">
+
+                                                                        <a href="@($"/danh-muc-san-pham/{item.Key.SeoUrl}-{item.Key.Id}")">
+                                                                            <h3 class="uppercase" style="text-align: center;"><span style="font-size: 100%; color: #562345;">@item.Key.Name</span></h3>
+                                                                        </a>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <style>
+                                                                #text-box-316200079 .text-inner {
+                                                                    padding: 0px 0px 0px 0px;
+                                                                }
+
+                                                                #text-box-316200079 {
+                                                                    width: 100%;
+                                                                }
+
+                                                                    #text-box-316200079 .text-box-content {
+                                                                        font-size: 50%;
+                                                                    }
+
+                                                                @@media (min-width:550px) {
+                                                                    #text-box-316200079 {
+                                                                        width: 100%;
+                                                                    }
+
+                                                                        #text-box-316200079 .text-box-content {
+                                                                            font-size: 80%;
+                                                                        }
+                                                                }
+                                                            </style>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="height-fix is-invisible">
+                                                    <img fetchpriority="high" decoding="async" width="960" height="540"
+                                                         src="@item.Key.Image"
+                                                         data-src="@item.Key.Image"
+                                                         class="attachment-original size-original lazy-load-active" alt="VANG DA LAT"
+                                                         sizes="(max-width: 960px) 100vw, 960px" title="Trang chủ 5">
+                                                </div>
+
+                                                <style>
+                                                    #banner-878192858 .bg.bg-loaded {
+                                                        background-image: url(@item.Key.Image);
+                                                    }
+
+                                                    #banner-878192858 .bg {
+                                                        background-position: 32% 70%;
+                                                    }
+                                                </style>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                }
+                                <style>
+                                    #banner-grid-666388294 .grid-col-1 {
+                                        height: 439px
+                                    }
+
+                                    #banner-grid-666388294 .grid-col-1-2 {
+                                        height: 219.5px
+                                    }
+
+                                    #banner-grid-666388294 .grid-col-1-3 {
+                                        height: 146.33333333333px
+                                    }
+
+                                    #banner-grid-666388294 .grid-col-2-3 {
+                                        height: 292.66666666667px
+                                    }
+
+                                    #banner-grid-666388294 .grid-col-1-4 {
+                                        height: 109.75px
+                                    }
+
+                                    #banner-grid-666388294 .grid-col-3-4 {
+                                        height: 329.25px
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+            <style>
+                #section_1794061458 {
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    margin-bottom: 40px;
+                }
+            </style>
+    </section>
+
+    <section class="section row-san-pham" id="section_1188566554">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+
+
+            <div class="effect-confetti bg-effect fill no-click"></div>
+
+
+        </div>
+
+        <div class="section-content relative">
+
+
+            <div class="row" id="row-1643825596">
+
+
+                <div id="col-405638304" class="col small-12 large-12">
+                    <div class="col-inner">
+
+
+
+                        <div class="container section-title-container">
+                            <h3 class="section-title section-title-bold-center">
+                                <b></b><span class="section-title-main" style="color:rgb(255, 48, 7);"><i class="icon-star"></i>Sản phẩm MỚI NHẤT</span><b>
+
+                                </b><a href="/tim-kiem-san-pham?s=" target="">Xem thêm<i class="icon-angle-right"></i></a>
+                            </h3>
+                        </div>
+
+                        <div id="gap-123350990" class="gap-element clearfix" style="display:block; height:auto;">
+
+                            <style>
+                                #gap-123350990 {
+                                    padding-top: 30px;
+                                }
+                            </style>
+                        </div>
+
+
+
+                        <div class="row res-sp large-columns-5 medium-columns-3 small-columns-2 row-small has-shadow row-box-shadow-2-hover slider row-slider slider-nav-circle slider-nav-light slider-nav-push"
+                             data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": true, "rightToLeft": false, "autoPlay" : 3000}'>
+                            @foreach (var newItem in Model.Products)
+                            {
+                                <div class="col">
+                                    <div class="col-inner">
+                                        <div class="product-small box res-sp has-hover box-normal box-text-bottom">
+                                            <div class="box-image">
+                                                <div class="">
+                                                    <a href="@("/san-pham/"+newItem.SeoUrl+"-"+newItem.Id)">
+                                                        <img loading="lazy" decoding="async" width="300" height="343"
+                                                             src="@newItem.Image" sizes="(max-width: 1080px) 100vw, 1080px" title="@newItem.Name">
+                                                    </a>
+                                                </div>
+                                                <div class="image-tools top right show-on-hover">
+                                                </div>
+                                                <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                </div>
+                                            </div>
+
+                                            <div class="box-text text-center">
+                                                <div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title"><a href="@("/san-pham/"+newItem.SeoUrl+"-"+newItem.Id)" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@newItem.Name</a></p></div><div class="price-wrapper">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <style>
+            #section_1188566554 {
+                padding-top: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 40px;
+            }
+        </style>
+    </section>
+
+
+
+    <section class="section de-xuat" id="section_969023515">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+        </div>
+
+        <div class="section-content relative">
+
+
+            <div class="row align-middle align-center" id="row-1257691297">
+
+
+                <div id="col-684927215" class="col small-12 large-12" data-animate="bounceIn">
+                    <div class="col-inner">
+
+
+
+                        <div class="container section-title-container"><h2 class="section-title section-title-center"><b></b><span class="section-title-main" style="color:rgb(242, 12, 33);">THƯƠNG HIỆU UY TÍN</span><b></b></h2></div>
+
+                        <div id="text-1789385667" class="text">
+
+
+                            <p style="text-align: center;"><em><span style="font-size: 95%;">Trải nghiệm thêm những gì chúng tôi sẽ mang lại cho quý vị.</span></em></p>
+
+                            <style>
+                                #text-1789385667 {
+                                    font-size: 1.4rem;
+                                }
+                            </style>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="col-1516413204" class="col medium-5 small-12 large-5" data-animate="bounceIn">
+                    <div class="col-inner text-center">
+
+
+
+                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_822307127">
+                            <div class="img-inner image-cover dark" style="padding-top:100%;">
+                                <img loading="lazy" decoding="async" width="960" height="540" src="/uploads/Hoang Hoa_page-0001.jpg" sizes="(max-width: 960px) 100vw, 960px" title="Trang chủ 27">
+                            </div>
+
+                            <style>
+                                #image_822307127 {
+                                    width: 64%;
+                                }
+                            </style>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="col-1732554104" class="col medium-7 small-12 large-7" data-animate="blurIn">
+                    <div class="col-inner">
+
+
+
+                        <div class="container section-title-container"><h3 class="section-title section-title-center"><b></b><span class="section-title-main" style="color:rgb(232, 59, 59);"><i class="icon-google-plus"></i>SẢN PHẨM BẢO VỆ SỨC KHỎE</span><b></b></h3></div>
+
+                        <div id="text-578050558" class="text">
+
+
+                            <p>Thành Phần :  Rượu Hoàng Hoa chủ đạo được chế xuất từ tinh dầu hoa kim cúc cùng một số dược liệu như Cam thảo, Mạch môn, Kỳ tử, Đương quy, Địa hoàng,... theo phương thức sản xuất cổ truyền. </p>
+                            <p>CÔNG DỤNG : </br> Bồi bổ ngũ tạng, sáng mắt và thanh lọc cơ thể</p>
+                            <style>
+                                #text-578050558 {
+                                    text-align: center;
+                                    font-size: 20px;
+                                }
+                            </style>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <style>
+            #section_969023515 {
+                padding-top: 30px;
+                padding-bottom: 30px;
+                background-color: rgb(247, 247, 247);
+            }
+        </style>
+    </section>
+
+    @foreach (var item in Model.CategoryViewModels)
+    {
+        <section class="section row-san-pham" id="section_1026310943">
+            <div class="bg section-bg fill bg-fill  bg-loaded">
+            </div>
+
+            <div class="section-content relative">
+
+
+                <div class="row" id="row-10172409">
+
+
+                    <div id="col-814895352" class="col small-12 large-12">
+                        <div class="col-inner">
+
+
+
+                            <div class="container section-title-container">
+                                <h3 class="section-title section-title-bold-center">
+                                    <b></b><span class="section-title-main" style="color:rgb(244, 73, 8);">
+                                        <i class="icon-star"></i>@item.Category.Name
+                                    </span><b></b><a href="@("/danh-muc-san-pham/"+item.Category.SeoUrl+"-"+item.Category.Id)" target="">Xem thêm<i class="icon-angle-right"></i></a>
+                                </h3>
+                            </div>
+
+                            <div id="gap-1362421861" class="gap-element clearfix" style="display:block; height:auto;">
+
+                                <style>
+                                    #gap-1362421861 {
+                                        padding-top: 30px;
+                                    }
+                                </style>
+                            </div>
+
+
+
+
+                            <div class="row large-columns-5 medium-columns-3 small-columns-2 row-small has-shadow row-box-shadow-2-hover slider row-slider slider-nav-reveal slider-nav-push" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
+
+                                @foreach (var product in item.Products)
+                                {
+                                    <div class="col">
+                                        <div class="col-inner">
+                                            <div class="product-small box has-hover box-normal box-text-bottom">
+                                                <div class="box-image">
+                                                    <div class="">
+                                                        <a href="@("/san-pham/"+product.SeoUrl+"-"+product.Id)"
+                                                           aria-label="@product.Name">
+                                                            <img loading="lazy" decoding="async" width="300" height="303"
+                                                                 src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20300%20303%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
+                                                                 data-src="@product.Image"
+                                                                 class="lazy-load show-on-hover absolute fill hide-for-small back-image"
+                                                                 alt="z4946987233045 6250fe801307ba9ab569f8d1ee234e66" srcset=""
+                                                                 data-srcset="@product.Image 300w,
+                                                            @product.Image 297w, @product.Image 768w,@product.Image 600w, @product.Image 100w, @product.Image 928w" sizes="(max-width: 300px) 100vw, 300px" title="Trang chủ 11"><img loading="lazy" decoding="async" width="1920" height="2560"
+                                                                                                                                                                                                                                              src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%201920%202560%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
+                                                                                                                                                                                                                                              data-src="@product.Image"
+                                                                                                                                                                                                                                              class="lazy-load attachment-original size-original" alt="IMG 20231206 171432" srcset=""
+                                                                                                                                                                                                                                              data-srcset="@product.Image 1920w, @product.Image 225w" sizes="(max-width: 1920px) 100vw, 1920px" title="Trang chủ 12">
+                                                        </a>
+                                                    </div>
+                                                    <div class="image-tools top right show-on-hover">
+                                                    </div>
+                                                    <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-text text-center">
+                                                    <div class="title-wrapper">
+                                                        <p class="name product-title woocommerce-loop-product__title">
+                                                            <a href="@("/san-pham/"+product.SeoUrl+"-"+product.Id)" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                @product.Name
+                                                            </a>
+                                                        </p>
+                                                    </div><div class="price-wrapper">
+                                                        <span class="price"> <ins><span class="woocommerce-Price-amount amount"><bdi>Liên Hệ</bdi></span></ins></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+            <style>
+                #section_1026310943 {
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    margin-bottom: 40px;
+                }
+            </style>
+        </section>
+
+
+    }
+
+
+    <section class="section" id="section_477523152">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+        </div>
+
+        <div class="section-content relative">
+
+
+            <div class="row" id="row-1168368025">
+
+
+                <div id="col-220772152" class="col small-12 large-12">
+                    <div class="col-inner">
+
+
+
+                        <div class="container section-title-container"><h3 class="section-title section-title-center"><b></b><span class="section-title-main" style="color:rgb(251, 42, 0);">CÂU CHUYỆN VỀ RƯỢU</span><b></b></h3></div>
+
+                        <div id="gap-645259146" class="gap-element clearfix" style="display:block; height:auto;">
+
+                            <style>
+                                #gap-645259146 {
+                                    padding-top: 30px;
+                                }
+                            </style>
+                        </div>
+
+
+
+
+                        <div class="row large-columns-3 medium-columns-1 small-columns-1 row-small has-shadow row-box-shadow-1 slider row-slider slider-nav-reveal slider-nav-push" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : 3000}'>
+                            @foreach (var item in Model.Articles)
+                            {
+                                <div class="col post-item">
+                                    <div class="col-inner">
+                                        <a hhref="@($"/bai-viet/{item.SeoUrl}-{item.Id}")" class="plain">
+                                            <div class="box box-bounce box-text-bottom box-blog-post has-hover">
+                                                <div class="box-image">
+                                                    <div class="image-cover" style="padding-top:56.25%;">
+                                                        <img loading="lazy" decoding="async" width="300" height="201"
+                                                             src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20300%20201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
+                                                             data-src="@item.Image"
+                                                             class="lazy-load attachment-medium size-medium wp-post-image" alt="138 grande" srcset=""
+                                                             data-srcset="@item.Image 300w,
+                                                        @item.Image 600w" sizes="(max-width: 300px) 100vw, 300px" title="@item.Name">
+                                                    </div>
+                                                </div>
+                                                <div class="box-text text-center">
+                                                    <div class="box-text-inner blog-post-inner">
+
+
+                                                        <h5 class="post-title is-large ">@item.Name</h5>
+                                                        <div class="is-divider"></div>
+                                                        <p class="from_the_blog_excerpt ">@item.Decsription					</p>
+
+                                                        <a href="@($"/bai-viet/{item.SeoUrl}-{item.Id}")" class="button  is-outline is-smaller mb-0">
+                                                            Xem Thêm
+                                                        </a>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="badge absolute top post-date badge-circle">
+                                                    <div class="badge-inner">
+                                                        <span class="post-date-day">@item.DateModified.Day</span><br>
+                                                        <span class="post-date-month is-xsmall">Th @item.DateModified.Month</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <style>
+            #section_477523152 {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+        </style>
+    </section>
+
+
+
+
+</div>
+

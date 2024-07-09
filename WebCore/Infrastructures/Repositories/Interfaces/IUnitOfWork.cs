@@ -10,8 +10,6 @@ namespace WebCore.Infrastructures.Repositories
     {
         Repository<T> Repository<T>() where T : class;
         GenericRepository<T> RepositoryDbWrite<T>() where T : class, IAggregateRoot;
-        // int CommitDbWrite();
-        // Task<int> SaveChangesAsyncDbWrite();
     }
 
     public interface IUnitOfWorkBase<TEntity, TId>
